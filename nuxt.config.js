@@ -10,8 +10,8 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: '夏季指南',
-    titleTemplate: '%s | shirmy',
+    title: '首页',
+    titleTemplate: '%s | CBLog',
     meta: [
       { charset: 'utf-8' },
       { 'http-equiv': 'cleartype', content: 'on' },
@@ -22,7 +22,7 @@ module.exports = {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'icon', type: 'image/x-icon', href: '/echo.png' },
       { rel: 'dns-prefetch', href: '//resource.shirmy.me' },
       { rel: 'dns-prefetch', href: '//api.shirmy.me' },
     ],
@@ -92,6 +92,10 @@ module.exports = {
     {
       src: '~/plugins/copy.js',
       ssr: false
+    },
+    {
+      src: '~/plugins/element.js',
+      ssr: true
     }
   ],
   /**
@@ -124,6 +128,16 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    babel: {
+      plugins: [
+        [ "component", 
+          {
+            "libraryName": "element-ui",
+            "styleLibraryName": "theme-chalk"
+          }
+        ] 
+      ] 
+    },
     /*
     ** You can extend webpack config here
     */

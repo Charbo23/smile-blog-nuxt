@@ -31,7 +31,7 @@ const defaultStar = {
   authors: [
     {
       id: 0,
-      name: '西麦'
+      name: 'Charbo'
     }
   ],
   created_date: Date.now(),

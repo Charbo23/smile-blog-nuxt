@@ -1,9 +1,6 @@
 <template>
   <div class="about-container">
-    <split-line
-      :icon="'about'"
-      :desc="'我们'"
-    ></split-line>
+    <split-line :icon="'about'" :desc="'我们'"></split-line>
     <ul class="author-list">
       <li
         class="author-item"
@@ -23,13 +20,17 @@
       </li>
     </ul>
     <div>
-      <split-line
-        :icon="'star-fill'"
-        :desc="'友链 (在留言板申请“昵称+链接”)'"
-      ></split-line>
+      <split-line :icon="'star-fill'" :desc="'友链 (在留言板申请“昵称+链接”)'"></split-line>
       <ul class="friend-wrapper" v-if="friends.length">
         <template v-for="friend in friends">
-          <a class="friend-item" :key="friend.id" :href="friend.link" target="_blank">{{friend.name}}</a>
+          <a class="friend-item" :key="friend.id" :href="friend.link" target="_blank">
+            <el-avatar
+              class="friend-avatar"
+              size="large"
+              :src="friend.avatar"
+            ></el-avatar>
+            <span class="friend-name">{{friend.name}}</span>
+          </a>
         </template>
       </ul>
     </div>
@@ -37,11 +38,11 @@
 </template>
 
 <script>
-import SplitLine from '@/components/base/split-line/split-line'
-import { mapState } from 'vuex'
+import SplitLine from "@/components/base/split-line/split-line";
+import { mapState } from "vuex";
 
 export default {
-  name: 'about-page',
+  name: "about-page",
 
   components: {
     SplitLine
@@ -49,13 +50,13 @@ export default {
 
   head() {
     return {
-      title: '关于'
-    }
+      title: "关于"
+    };
   },
 
-  async fetch ({ store, params }) {
-    await store.dispatch('about/getAuthors')
-    await store.dispatch('blog/getFriends')
+  async fetch({ store, params }) {
+    await store.dispatch("about/getAuthors");
+    await store.dispatch("blog/getFriends");
   },
 
   computed: {
@@ -69,15 +70,15 @@ export default {
     showProfile(id) {
       this.$router.push({
         path: `/about/${id}`
-      })
+      });
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/scss/variables.scss';
-@import '@/assets/scss/mixin.scss';
+@import "@/assets/scss/variables.scss";
+@import "@/assets/scss/mixin.scss";
 
 .about-container {
   @include container;
@@ -99,7 +100,7 @@ export default {
     padding-bottom: 40px;
     border-radius: 20px;
     overflow: hidden;
-    transition: all .25s ease-in-out;
+    transition: all 0.25s ease-in-out;
     cursor: pointer;
 
     &:hover {
@@ -127,7 +128,7 @@ export default {
         .social-item {
           font-size: $title-font-size-base;
           margin-right: 20px;
-          transition: color .25s ease-in-out;
+          transition: color 0.25s ease-in-out;
           cursor: pointer;
 
           &:last-child {
@@ -173,17 +174,17 @@ export default {
   margin: 0 -5px;
 
   .friend-item {
-    display: inline-block;
+    display: flex;
+    align-items: center;
     padding: 5px 12px;
     margin: 5px;
     color: var(--font-color-primary);
     font-size: $font-size-base;
     font-weight: $font-weight-bold;
     letter-spacing: 1.5px;
-    border-radius: 20px;
+    border-radius: 30px;
     background: var(--tag-color);
     cursor: pointer;
-
     &:last-child {
       margin-right: 0;
     }
@@ -191,7 +192,10 @@ export default {
     &:hover {
       color: #fff;
       background: var(--theme-active);
-      transition: all .25s ease-in-out;
+      transition: all 0.25s ease-in-out;
+    }
+    .friend-avatar + .friend-name {
+      margin-left: 10px;
     }
   }
 }
