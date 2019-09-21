@@ -9,13 +9,13 @@
         <desktop-nav :navList="navList"></desktop-nav>
       </div>
       <div class="social-links between">
-        <a href="mailto:qiushiming1997@gmail.com" target="_blank">
+        <a href="mailto:charbo233@foxmail.com" target="_blank">
           <i class="icon icon-mail"></i>
         </a>
-        <a href="https://github.com/smileShirmy" target="_blank">
+        <a href="https://github.com/Charbo23" target="_blank">
           <i class="icon icon-github"></i>
         </a>
-        <a href="https://juejin.im/user/5a37bf31f265da430e4f43eb" target="_blank">
+        <a href="https://juejin.im/user/5abe25f36fb9a028c97a2b5c" target="_blank">
           <span class="text">掘金</span>
         </a>
       </div>

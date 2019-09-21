@@ -4,6 +4,7 @@
       :showRightArrow="starArticles.length > 1"
       :showLeftArrow="starArticles.length > 1"
       :autoplay="starArticles.length > 1"
+      :autoplaySpeed=6000
     >
       <carousel-item v-for="article in starArticles" :key="article.id">
         <carousel-card :article="article"></carousel-card>

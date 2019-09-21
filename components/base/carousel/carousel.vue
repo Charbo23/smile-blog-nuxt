@@ -47,7 +47,7 @@ export default {
     },
     autoplaySpeed: {
       type: Number,
-      default: 3000
+      default: 5000
     },
     loop: {
       type: Boolean,

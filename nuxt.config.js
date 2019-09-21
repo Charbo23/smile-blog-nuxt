@@ -5,7 +5,9 @@ module.exports = {
   server: {
     port: 5000, // default: 5000
   },
-
+  generate: {
+    dir: "public"
+  },
   /*
   ** Headers of the page
   */
@@ -130,13 +132,13 @@ module.exports = {
   build: {
     babel: {
       plugins: [
-        [ "component", 
+        ["component",
           {
             "libraryName": "element-ui",
             "styleLibraryName": "theme-chalk"
           }
-        ] 
-      ] 
+        ]
+      ]
     },
     /*
     ** You can extend webpack config here
