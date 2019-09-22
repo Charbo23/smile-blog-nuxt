@@ -8,7 +8,8 @@
   $link-color,
   $border-color,
   $tag-color,
-  $code-bg
+  $code-bg,
+  $progress-bar-color
 ) {
   --app-background-color: #{$theme-primary};
   --app-background-color-light: #{lighten($theme-primary, 3%)};
@@ -30,6 +31,7 @@
   --code-background: #{$code-bg};
 
   --link-color: #{$link-color};
+  --progress-bar-color: #{$progress-bar-color};
 }
 
 
@@ -46,6 +48,7 @@ body {
       $border-color: #dcdfe7,
       $tag-color: #f4f4f4,
       $code-bg: #f7f7f7,
+      $progress-bar-color:#000,
     )  
   }
 
@@ -60,7 +63,8 @@ body {
       $link-color: #75bfd7,
       $border-color: #545c6f,
       $tag-color: #333844,
-      $code-bg: #21252c
+      $code-bg: #21252c,
+      $progress-bar-color:#fff,
     )
   }
 }

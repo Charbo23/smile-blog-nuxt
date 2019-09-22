@@ -178,3 +178,11 @@ h6 {
     font-size: 11px;
   }
 }
+
+.nuxt-progress {
+  background-color: var(--progress-bar-color);
+
+  &.nuxt-progress-failed {
+      background-color: red;
+  }
+}
