@@ -24,33 +24,33 @@ module.exports = {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/echo.png' },
-      { rel: 'dns-prefetch', href: '//resource.shirmy.me' },
-      { rel: 'dns-prefetch', href: '//api.shirmy.me' },
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      // { rel: 'dns-prefetch', href: '//resource.shirmy.me' },
+      { rel: 'dns-prefetch', href: '//smile.avosapps.us' },
     ],
-    script: [
-      {
-        async: 'async',
-        type: 'text/javascript',
-        src: 'https://resource.shirmy.me/intersection-polyfill.js'
-      },
-      {
-        async: 'async',
-        type: 'text/javascript',
-        src: 'https://www.googletagmanager.com/gtag/js?id=UA-144196694-1'
-      },
-      {
-        // Global site tag (gtag.js) - Google Analytics
-        type: 'text/javascript',
-        innerHTML: `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
+    // script: [
+    //   {
+    //     async: 'async',
+    //     type: 'text/javascript',
+    //     src: 'https://resource.shirmy.me/intersection-polyfill.js'
+    //   },
+    //   {
+    //     async: 'async',
+    //     type: 'text/javascript',
+    //     src: 'https://www.googletagmanager.com/gtag/js?id=UA-144196694-1'
+    //   },
+    //   {
+    //     // Global site tag (gtag.js) - Google Analytics
+    //     type: 'text/javascript',
+    //     innerHTML: `
+    //       window.dataLayer = window.dataLayer || [];
+    //       function gtag(){dataLayer.push(arguments);}
+    //       gtag('js', new Date());
 
-          gtag('config', 'UA-144196694-1');
-        `
-      }
-    ],
+    //       gtag('config', 'UA-144196694-1');
+    //     `
+    //   }
+    // ],
     noscript: [
       {
         innerHTML: 'This website requires JavaScript.'

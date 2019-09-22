@@ -1,0 +1,31 @@
+{
+  "name": "smile-blog-nuxt",
+  "version": 2,
+  "builds": [
+    {
+      "src": "nuxt.config.js",
+      "use": "@nuxtjs/now-builder",
+      "config": {
+        "serverFiles": [
+          "middleware/**"
+        ]
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/_nuxt/.+",
+      "headers": {
+        "Cache-Control": "max-age=31557600"
+      }
+    },
+    {
+      "src": "/favicon.ico",
+      "dest": "/favicon.ico"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/"
+    }
+  ]
+}
