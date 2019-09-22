@@ -4,7 +4,7 @@ import Config from '@/config'
 
 const config = {
   baseURL: Config.baseUrl,
-  timeout: 5 * 1000,
+  timeout: 10000,
   crossDomain: true,
   validateStatus(status) {
     return status >= 200 && status < 500

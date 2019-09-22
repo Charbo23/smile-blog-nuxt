@@ -2,7 +2,7 @@
   <div class="search-container">
     <div class="search-image"></div>
     <aside class="section-search">
-      <div class="search-close" @click="closeSearch">
+      <div class="search-close"  @click="closeSearch">
         <i class="icon icon-close"></i>
       </div>
       <div class="search-wrapper">
@@ -13,6 +13,8 @@
           maxlength="10"
           v-model="searchVal"
           @keyup="debouncedSearch"
+          @keyup.esc="closeSearch"
+          ref="searchInput"
         />
         <div class="search-result">为你找到 {{total}} 项结果</div>
         <loading v-if="!articles.length && loading"></loading>
@@ -128,7 +130,7 @@ export default {
 
   created() {
     this.$store.dispatch("search/getSearchData");
-    this.debouncedSearch = debounce(1000, false, () => {
+    this.debouncedSearch = debounce(300, false, () => {
       this.searchArticles();
     });
   },
@@ -136,6 +138,8 @@ export default {
   mounted() {
     if (process.client) {
       document.body.style.overflow = "hidden";
+      const searchInput = this.$refs.searchInput;
+      searchInput.focus();
     }
   },
 

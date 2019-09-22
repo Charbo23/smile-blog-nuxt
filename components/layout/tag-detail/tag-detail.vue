@@ -4,7 +4,7 @@
       <template v-slot:info>
         <div class="posts-number">
           <i class="icon icon-post"></i>
-          <span>{{total || 0}}&nbsp;posts</span>
+          <span>{{total || 0}}&nbsp;{{total>1?'posts':'post'}}</span>
         </div>
       </template>
     </detail-header>

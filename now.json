@@ -18,14 +18,6 @@
       "headers": {
         "Cache-Control": "max-age=31557600"
       }
-    },
-    {
-      "src": "/favicon.ico",
-      "dest": "/favicon.ico"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/"
     }
   ]
 }
