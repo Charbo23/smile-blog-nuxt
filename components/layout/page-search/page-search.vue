@@ -6,12 +6,22 @@
         <i class="icon icon-close"></i>
       </div>
       <div class="search-wrapper">
-        <input class="search-input" type="text" placeholder="search..." maxlength="10" v-model="searchVal" @keyup="debouncedSearch">
+        <input
+          class="search-input"
+          type="text"
+          placeholder="search..."
+          maxlength="10"
+          v-model="searchVal"
+          @keyup="debouncedSearch"
+        />
         <div class="search-result">为你找到 {{total}} 项结果</div>
         <loading v-if="!articles.length && loading"></loading>
         <ul class="result-list" v-show="articles.length">
           <li class="result-item" v-for="article in articles" :key="article.id">
-            <time class="time" :datetime="article.created_date | filterTime">{{article.created_date| filterTime}}</time>
+            <time
+              class="time"
+              :datetime="article.created_date | filterTime"
+            >{{article.created_date| filterTime}}</time>
             <h4 class="title" @click="selectArticle(article.id)">{{article.title}}</h4>
           </li>
         </ul>
@@ -34,10 +44,10 @@
 </template>
 
 <script>
-import { debounce } from 'throttle-debounce'
-import { mapMutations, mapState } from 'vuex'
-import TagList from '@/components/base/tag-list/tag-list'
-import SwitchTheme from '@/components/base/switch-theme/switch-theme'
+import { debounce } from "throttle-debounce";
+import { mapMutations, mapState } from "vuex";
+import TagList from "@/components/base/tag-list/tag-list";
+import SwitchTheme from "@/components/base/switch-theme/switch-theme";
 
 export default {
   components: {
@@ -48,8 +58,8 @@ export default {
   data() {
     return {
       page: 0,
-      searchVal: ''
-    }
+      searchVal: ""
+    };
   },
 
   computed: {
@@ -64,77 +74,77 @@ export default {
 
   methods: {
     ...mapMutations({
-      setShowSearch: 'app/setShowSearch'
+      setShowSearch: "app/setShowSearch"
     }),
 
     closeSearch() {
-      this.setShowSearch(false)
+      this.setShowSearch(false);
     },
 
     onSelectCategory(category) {
-      this.$router.push(`/category/${category.id}`)
-      this.closeSearch()
+      this.$router.push(`/category/${category.id}`);
+      this.closeSearch();
     },
 
     onSelectAuthor(author) {
-      this.$router.push(`/about/${author.id}`)
-      this.closeSearch()
+      this.$router.push(`/about/${author.id}`);
+      this.closeSearch();
     },
 
     selectArticle(id) {
-      this.$router.push(`/article/${id}`)
-      this.closeSearch()
+      this.$router.push(`/article/${id}`);
+      this.closeSearch();
     },
 
     async getAuthors() {
       try {
-        const res = await author.getAuthors()
-        this.authors = res
+        const res = await author.getAuthors();
+        this.authors = res;
       } catch (e) {
         // eslint-disable-next-line no-console
-        console.log(e)
+        console.log(e);
       }
     },
 
     async getCategories() {
       try {
-        const res = await category.getCategories()
-        this.categories = res
+        const res = await category.getCategories();
+        this.categories = res;
       } catch (e) {
         // eslint-disable-next-line no-console
-        console.log(e)
+        console.log(e);
       }
     },
 
-     async searchArticles() {
+    async searchArticles() {
       if (!this.searchVal && this.searchVal.length <= 10) {
-        return
+        return;
       }
-      this.$store.dispatch('search/searchArticles', {
+      this.$store.dispatch("search/searchArticles", {
         search: this.searchVal
-      })
-    },
+      });
+    }
   },
 
   created() {
-    this.$store.dispatch('search/getSearchData')
+    this.$store.dispatch("search/getSearchData");
     this.debouncedSearch = debounce(1000, false, () => {
-      this.searchArticles()
-    })
+      this.searchArticles();
+    });
   },
 
   mounted() {
     if (process.client) {
-      document.body.style.overflow = 'hidden'
+      document.body.style.overflow = "hidden";
     }
   },
 
   beforeDestroy() {
     if (process.client) {
-      document.body.style.overflow = 'visible'
+      document.body.style.overflow = "visible";
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -153,7 +163,7 @@ export default {
 .search-image {
   width: 40%;
   height: 100%;
-  background: url(../../../assets/image/lighthouse.jpeg) no-repeat center center;
+  background: url("~@/assets/image/lighthouse.jpeg") no-repeat center center;
   background-size: cover;
 
   @media (max-width: 767px) {
@@ -218,7 +228,7 @@ export default {
     border-style: solid;
     border-color: var(--border-color);
     background-color: var(--app-background-color);
-    transition: border .25s ease-in-out;
+    transition: border 0.25s ease-in-out;
 
     &:focus {
       border-bottom-color: var(--theme-active);
