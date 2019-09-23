@@ -3,7 +3,7 @@ module.exports = {
   mode: 'universal',
 
   server: {
-    port: 5000, // default: 5000
+    port: process.env.NODE_ENV === "production" ? 5001 : 5000, // default: 5000
   },
   generate: {
     dir: "public"
@@ -25,8 +25,9 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      // { rel: 'dns-prefetch', href: '//resource.shirmy.me' },
       { rel: 'dns-prefetch', href: '//smile.avosapps.us' },
+      { rel: 'dns-prefetch', href: '//charbo.me' },
+      { rel: 'dns-prefetch', href: '//i.loli.net' },
     ],
     // script: [
     //   {
@@ -91,10 +92,10 @@ module.exports = {
     {
       src: '~/plugins/global-component.js'
     },
-    {
-      src: '~/plugins/copy.js',
-      ssr: false
-    },
+    // {
+    //   src: '~/plugins/copy.js',
+    //   ssr: false
+    // },
     {
       src: '~/plugins/element.js',
       ssr: true

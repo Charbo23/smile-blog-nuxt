@@ -1,7 +1,7 @@
 <template>
   <i
     class="icon"
-    :class="theme === 'light' ? 'icon-dark' : 'icon-light'"
+    :class="theme === 'light' ? 'icon-light' : 'icon-dark'"
     :style="{fontSize: size}"
     @click="switchTheme"
   ></i>

@@ -44,20 +44,8 @@ marked.setOptions({
 })
 
 const imageParse = (src, title, alt) => {
-  if (!src.includes(Config.staticPath)) {
+  if (Config.imageLazyLoad) {
     return `
-      <figure class="image-wrapper">
-        <div class="progress-image">
-          <img
-            src="${src}" title="${title || alt || 'shirmy'}" />
-        </div>
-        <div class="image-caption">
-          <span>${title || alt || ''}</span>
-        </div>
-      </figure>
-    `
-  }
-  return `
     <figure class="image-wrapper">
       <div class="progress-image">
         <img src="${src}" title="${title || alt || 'shirmy'}"
@@ -72,6 +60,19 @@ const imageParse = (src, title, alt) => {
       </div>
     </figure>
   `
+  }
+  return `
+      <figure class="image-wrapper">
+        <div class="progress-image">
+          <img
+            src="${src}" title="${title || alt || 'shirmy'}" data-origin="${src}"
+            class="image-popper" />
+        </div>
+        <div class="image-caption">
+          <span>${title || alt || ''}</span>
+        </div>
+      </figure>
+    `
 }
 
 const linkParser = (href, title, text) => {
