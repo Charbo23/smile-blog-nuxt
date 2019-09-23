@@ -1,5 +1,5 @@
 const Config = {
-  baseUrl: process.env.NODE_ENV === 'production' ? 'https://smile.avosapps.us' : 'http://127.0.0.1:3000',
+  baseUrl: process.env.NODE_ENV === 'production' ? 'https://smile-blog-koa.herokuapp.com' : 'http://127.0.0.1:3000',
   // 如果使用七牛云存储可通过后缀支持先展示缩略图,实现懒加载
   // staticPath: 'charbo.me'
   imageLazyLoad: false
