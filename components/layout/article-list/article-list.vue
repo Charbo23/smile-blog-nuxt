@@ -7,17 +7,27 @@
             <a class="category">{{article.category.name}}</a>
             <h3 class="title">
               <router-link :to="'/article/' + article.id" class="article-link">
-                {{article.title}}<span class="hover-dot"></span>
+                {{article.title}}
+                <span class="hover-dot"></span>
               </router-link>
             </h3>
             <p class="content">{{article.description}}</p>
             <footer class="footer">
               <div class="author-wrapper">
                 <div class="avatar-wrapper">
-                  <i class="avatar" v-for="author in article.authors" :key="author.id" :style="{backgroundImage: `url(${author.avatar})`}"></i>
+                  <i
+                    class="avatar"
+                    v-for="author in article.authors"
+                    :key="author.id"
+                    :style="{backgroundImage: `url(${author.avatar})`}"
+                  ></i>
                 </div>
                 <ul class="name-wrapper">
-                  <li class="name" v-for="author in article.authors" :key="author.id">{{author.name}}</li>
+                  <li
+                    class="name"
+                    v-for="author in article.authors"
+                    :key="author.id"
+                  >{{author.name}}</li>
                 </ul>
               </div>
               <div class="info-wrapper">
@@ -27,12 +37,17 @@
                 <span class="count">{{article.comment_count}}</span>
                 <i class="icon icon-heart"></i>
                 <span class="count">{{article.like}}</span>
-                <time class="time" :datetime="article.created_date | filterTime('Y-m-d')">{{article.created_date | filterTime('Y-m-d')}}</time>
+                <time
+                  class="time"
+                  :datetime="article.created_date | filterTime('Y-m-d')"
+                >{{article.created_date | filterTime('Y-m-d')}}</time>
               </div>
             </footer>
           </article>
           <div v-if="article.cover" class="split"></div>
-          <img v-if="article.cover" class="article-image" :src="article.cover"/>
+          <router-link :to="'/article/' + article.id" class="article-link">
+            <img v-if="article.cover" class="article-image" :src="article.cover" />
+          </router-link>
         </li>
       </ul>
       <div v-if="isLoadMore" class="load-more" @click="$emit('loadMore')"></div>
@@ -44,7 +59,7 @@
 
 <script>
 export default {
-  name: 'article-list',
+  name: "article-list",
 
   props: {
     articles: {
@@ -66,13 +81,13 @@ export default {
   computed: {
     isLoadMore() {
       if (this.articles.length && !this.loading) {
-        return this.total > this.articles.length
+        return this.total > this.articles.length;
       } else {
-        return false
+        return false;
       }
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -172,7 +187,6 @@ export default {
         transition: all 0.25s ease;
       }
     }
-
   }
 
   .content {
@@ -237,7 +251,7 @@ export default {
           }
 
           &:not(:first-child)::before {
-            content: ', '
+            content: ", ";
           }
         }
       }
@@ -248,17 +262,17 @@ export default {
       align-items: center;
       font-size: $font-size-small;
 
-      >i {
+      > i {
         display: inline-block;
         margin-right: 2px;
       }
 
-      >span {
+      > span {
         margin-right: 10px;
         line-height: 1;
       }
 
-      >time {
+      > time {
         line-height: 1;
       }
 
@@ -305,7 +319,7 @@ export default {
   margin: 0 auto;
   border: 8px solid #dcdfe7;
   border-radius: 50%;
-  transition: all .25s ease-in-out;
+  transition: all 0.25s ease-in-out;
   cursor: pointer;
 
   @media (max-width: 479px) {
@@ -317,7 +331,7 @@ export default {
   &:hover {
     border-color: var(--theme-active);
     background-color: var(--theme-active);
-    transform: scale(.65);
+    transform: scale(0.65);
   }
 }
 </style>
