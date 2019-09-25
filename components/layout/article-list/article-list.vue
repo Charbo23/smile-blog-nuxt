@@ -297,8 +297,12 @@ export default {
   min-width: 340px;
   border-radius: 4px;
   background-size: cover;
-  // box-shadow: 0 5px 26px -3px rgba(0, 0, 0, .12);
+  box-shadow: 0 5px 26px -3px rgba(0, 0, 0, .12);
   cursor: pointer;
+  transition: transform .3s;
+  &:hover {
+    transform: translateY(-5px);
+  }
 
   @media (max-width: 1023px) {
     width: 100%;

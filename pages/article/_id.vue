@@ -7,8 +7,16 @@
           <h1 class="title">{{article.title}}</h1>
           <div class="author-wrapper" v-show="article.created_date">
             by&nbsp;
-            <router-link tag="span" v-for="author in article.authors" :key="author.id" class="author-name" :to="`/about/${author.id}`">{{author.name}}</router-link>
-            &nbsp;<time :datetime="article.created_date | filterTime">&nbsp;{{article.created_date | filterTime}}</time>
+            <router-link
+              tag="span"
+              v-for="author in article.authors"
+              :key="author.id"
+              class="author-name"
+              :to="`/about/${author.id}`"
+            >{{author.name}}</router-link>&nbsp;
+            <time
+              :datetime="article.created_date | filterTime"
+            >&nbsp;{{article.created_date | filterTime}}</time>
           </div>
         </div>
       </div>
@@ -25,7 +33,13 @@
           <div class="tags-wrapper">
             <i class="icon icon-tags-fill"></i>
             <ul class="tags">
-              <router-link tag="li" class="tag-item" v-for="tag in article.tags" :key="tag.id" :to="`/tag/${tag.id}?name=${tag.name}`">{{tag.name}}</router-link>
+              <router-link
+                tag="li"
+                class="tag-item"
+                v-for="tag in article.tags"
+                :key="tag.id"
+                :to="`/tag/${tag.id}?name=${tag.name}`"
+              >{{tag.name}}</router-link>
             </ul>
           </div>
           <div class="like-btn" @click="likeArticle">
@@ -34,9 +48,17 @@
           </div>
         </div>
         <!-- 相关推荐 -->
-        <split-line v-if="haveCategoryArtilces" class="split-line" :icon="'recommend'" :desc="'相关推荐'"></split-line>
+        <split-line
+          v-if="haveCategoryArtilces"
+          class="split-line"
+          :icon="'recommend'"
+          :desc="'相关推荐'"
+        ></split-line>
         <div v-if="haveCategoryArtilces" class="recommend-wrapper">
-          <recommend :articles="article.categoryArticles" @showRecommendDetail="onShowRecommendDetail"></recommend>
+          <recommend
+            :articles="article.categoryArticles"
+            @showRecommendDetail="onShowRecommendDetail"
+          ></recommend>
         </div>
       </div>
     </div>
@@ -45,7 +67,12 @@
       <div class="content">
         <split-line class="split-line" :icon="'message'" :desc="'评论'"></split-line>
         <div class="comment-wrapper">
-          <comment :comments="comments" @createCommentSuccess="getComments" :articleId="parseInt(id)" :loading="loading"></comment>
+          <comment
+            :comments="comments"
+            @createCommentSuccess="getComments"
+            :articleId="parseInt(id)"
+            :loading="loading"
+          ></comment>
         </div>
       </div>
     </div>
@@ -64,17 +91,18 @@
 </template>
 
 <script>
-import markdown from '@/plugins/marked'
-import Recommend from '@/components/layout/recommend/recommend'
-import Comment from '@/components/layout/comment/comment'
-import SplitLine from '@/components/base/split-line/split-line'
-import TagList from '@/components/base/tag-list/tag-list'
-import Dialog from '@/components/base/dialog/dialog'
-import defaultCover from '@/assets/image/lighthouse.jpeg'
-import { mapState, mapMutations } from 'vuex'
+import markdown from "@/plugins/marked";
+import Recommend from "@/components/layout/recommend/recommend";
+import Comment from "@/components/layout/comment/comment";
+import SplitLine from "@/components/base/split-line/split-line";
+import TagList from "@/components/base/tag-list/tag-list";
+import Dialog from "@/components/base/dialog/dialog";
+import defaultCover from "@/assets/image/lighthouse.jpeg";
+import { mapState, mapMutations } from "vuex";
+import Config from "@config";
 
 export default {
-  name: 'article-detail',
+  name: "article-detail",
 
   components: {
     Recommend,
@@ -87,160 +115,172 @@ export default {
   head() {
     return {
       title: this.article.title
-    }
+    };
   },
 
   async fetch({ store, params }) {
-    await store.dispatch('article/getArticleDetail', {
+    await store.dispatch("article/getArticleDetail", {
       id: params.id
-    })
-    await store.dispatch('article/getComments', {
+    });
+    await store.dispatch("article/getComments", {
       articleId: params.id
-    })
+    });
   },
 
   data() {
     return {
       dialogVisible: false,
       imgLoading: false,
-      imgSrc: '',
+      imgSrc: "",
       id: 0,
       likeArticles: [],
       articleCover: {},
       loading: false,
       articleLike: 0
-    }
+    };
   },
 
   computed: {
     ...mapState({
       article(state) {
-        const article = state.article.article
+        const article = state.article.article;
         if (!article) {
-          return {}
+          return {};
         }
         if (article.cover) {
-          this.articleCover = { backgroundImage: `url(${article.cover})` }
+          this.articleCover = { backgroundImage: `url(${article.cover})` };
         } else {
-          this.articleCover = { backgroundImage: `url(${defaultCover})` }
+          this.articleCover = { backgroundImage: `url(${defaultCover})` };
         }
-        this.articleLike = article.like
-        return article
+        this.articleLike = article.like;
+        return article;
       },
       comments: state => state.article.comments
     }),
 
     isLike() {
-      return this.likeArticles.includes(this.id)
+      return this.likeArticles.includes(this.id);
     },
 
     haveCategoryArtilces() {
-      return this.article.categoryArticles && this.article.categoryArticles.length
+      return (
+        this.article.categoryArticles && this.article.categoryArticles.length
+      );
     },
 
     markedContent() {
       if (this.article.content) {
-        return markdown(this.article.content)
+        return markdown(this.article.content);
       } else {
-        return ''
+        return "";
       }
-    },
+    }
   },
 
   methods: {
     // markdown 解析
     marked(content) {
-      return markdown(content)
+      return markdown(content);
     },
 
     // 点赞文章
     async likeArticle() {
       if (this.isLike) {
-        return
+        return;
       }
       try {
-        const res = await this.$store.dispatch('article/likeArticle', this.id)
+        const res = await this.$store.dispatch("article/likeArticle", this.id);
         if (res.errorCode === 0) {
-          this.articleLike++
-          this.likeArticles.push(this.id)
-          window.localStorage.setItem('LIKE_ARTICLES', JSON.stringify(this.likeArticles))
+          this.articleLike++;
+          this.likeArticles.push(this.id);
+          window.localStorage.setItem(
+            "LIKE_ARTICLES",
+            JSON.stringify(this.likeArticles)
+          );
         }
       } catch (e) {
         // eslint-disable-next-line no-console
-        console.log(e)
+        console.log(e);
       }
     },
 
     // 滚动到评论区
     scrollToComment() {
       this.$refs.commentArea.scrollIntoView({
-        behavior: 'smooth'
-      })
+        behavior: "smooth"
+      });
     },
 
     onShowRecommendDetail(articleId) {
-      this.id = articleId
+      this.id = articleId;
       this.$router.push({
         path: `/article/${articleId}`
-      })
+      });
     },
 
     getLikeArticles() {
       if (process.client) {
-        this.likeArticles = JSON.parse(window.localStorage.getItem('LIKE_ARTICLES') || '[]')
+        this.likeArticles = JSON.parse(
+          window.localStorage.getItem("LIKE_ARTICLES") || "[]"
+        );
       }
     },
 
     getComments() {
-      this.$store.dispatch('article/getComments', {
+      this.$store.dispatch("article/getComments", {
         articleId: this.id
-      })
+      });
     },
 
     initImg() {
-      import('../../services/utils/lazy-img').then(res => {
-        res.default('.image-popper')
-      })
-      const el = this.$refs.markedContent
-      el.addEventListener('click', e => {
-        const target = e.target
-        if (target.nodeName.toLocaleLowerCase() === 'img' && target.classList.contains('image-popper')) {
-          e.stopPropagation()
-          this.imgLoading = true
-          this.dialogVisible = true
-          const src = target.dataset.origin
+      if (Config.imageLazyLoad) {
+        import("../../services/utils/lazy-img").then(res => {
+          res.default(".image-popper");
+        });
+      }
+      const el = this.$refs.markedContent;
+      el.addEventListener("click", e => {
+        const target = e.target;
+        if (
+          target.nodeName.toLocaleLowerCase() === "img" &&
+          target.classList.contains("image-popper")
+        ) {
+          e.stopPropagation();
+          this.imgLoading = true;
+          this.dialogVisible = true;
+          const src = target.dataset.origin;
 
-          const image = new Image()
-          image.src = src
+          const image = new Image();
+          image.src = src;
 
           image.onload = () => {
-            this.imgSrc = src
-            this.imgLoading = false
-          }
+            this.imgSrc = src;
+            this.imgLoading = false;
+          };
 
           image.onerror = () => {
-            this.imgSrc = src
-            this.imgLoading = false
-          }
+            this.imgSrc = src;
+            this.imgLoading = false;
+          };
         }
-      })
+      });
     }
   },
 
   created() {
-    this.id = this.$nuxt.$route.params.id
-    this.getLikeArticles()
+    this.id = this.$nuxt.$route.params.id;
+    this.getLikeArticles();
   },
 
   mounted() {
-    this.initImg()
+    this.initImg();
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/scss/variables.scss';
-@import '@/assets/scss/mixin.scss';
+@import "@/assets/scss/variables.scss";
+@import "@/assets/scss/mixin.scss";
 
 .article-header {
   @include cover;
@@ -287,7 +327,7 @@ export default {
   }
 
   .title {
-    margin: .7em 0;
+    margin: 0.7em 0;
     line-height: 1;
     font-size: $title-font-size-extra-large;
     font-weight: $font-weight-bold;
@@ -301,7 +341,7 @@ export default {
     font-size: $font-size-small;
 
     @media (max-width: 479px) {
-      font-size: $font-size-minimum
+      font-size: $font-size-minimum;
     }
 
     .author-name {
@@ -314,7 +354,7 @@ export default {
       }
 
       &:not(:first-child)::before {
-        content: '、'
+        content: "、";
       }
     }
   }
@@ -374,7 +414,7 @@ export default {
   right: 0;
   bottom: 21%;
   z-index: $index-popper;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .14);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.14);
 
   @media (max-width: 479px) {
     display: none;
@@ -396,7 +436,7 @@ export default {
     }
 
     &:hover {
-      >i {
+      > i {
         color: var(--theme-active);
       }
     }
@@ -412,9 +452,9 @@ export default {
       background-color: var(--tag-color);
     }
 
-    >i {
+    > i {
       font-size: $font-size-extra-large;
-      transition: all .15s linear;
+      transition: all 0.15s linear;
     }
 
     .is-like {
@@ -434,7 +474,7 @@ export default {
   justify-content: flex-start;
   font-size: 1rem;
 
-  >i {
+  > i {
     margin: 8px 10px 0 0;
     font-size: $font-size-icon-rem;
   }
@@ -449,7 +489,7 @@ export default {
       cursor: pointer;
 
       &:not(:first-child)::before {
-        content: '、'
+        content: "、";
       }
     }
   }
@@ -465,7 +505,7 @@ export default {
   font-size: 1rem;
   cursor: pointer;
 
-  >i {
+  > i {
     margin-right: 6px;
     font-size: $font-size-icon-rem;
 

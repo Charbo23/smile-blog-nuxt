@@ -1,4 +1,4 @@
-
+const path = require('path');
 module.exports = {
   mode: 'universal',
 
@@ -145,6 +145,12 @@ module.exports = {
     ** You can extend webpack config here
     */
     extend(config, ctx) {
+
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        '@config': path.resolve('config'),
+      }
     }
+
   }
 }
