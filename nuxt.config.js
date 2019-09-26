@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack')
 module.exports = {
   mode: 'universal',
 
@@ -131,6 +132,13 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    plugins: [
+      // webpack plugin
+      new webpack.DefinePlugin({
+        TEST: JSON.stringify('hello')
+      })
+      
+    ],
     babel: {
       plugins: [
         ["component",
@@ -149,7 +157,12 @@ module.exports = {
       config.resolve.alias = {
         ...config.resolve.alias,
         '@config': path.resolve('config'),
+      };
+      config.performance = {
+        'maxAssetSize': 1024 * 1024,
+        'maxEntrypointSize': 1024 * 1024
       }
+
     }
 
   }
