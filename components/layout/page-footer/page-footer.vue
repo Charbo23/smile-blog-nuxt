@@ -22,7 +22,7 @@
     </div>
     <div class="footer-copyright">
       <span class="copyright">© 2019 <span class="logo">Smile</span></span>. All Right Reserved.
-      <div class="record-number">粤ICP备17101737号-1</div>
+      <!-- <div class="record-number">粤ICP备17101737号-1</div> -->
     </div>
   </footer>
 </template>

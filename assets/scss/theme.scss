@@ -67,6 +67,14 @@ body {
             $code-bg: #21252c,
         );
 
+        .article-list-wrapper {
+            box-shadow: none;
+        }
+
+        .article-image {
+            box-shadow: none;
+        }
+
         .nuxt-progress {
             background-color: #fff;
 

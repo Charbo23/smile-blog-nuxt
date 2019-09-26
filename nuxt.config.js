@@ -1,5 +1,6 @@
 const path = require('path');
-const webpack = require('webpack')
+// const webpack = require('webpack');
+
 module.exports = {
   mode: 'universal',
 
@@ -21,7 +22,7 @@ module.exports = {
       { 'http-equiv': 'Cache-Control' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1, user-scalable=no' },
       { hid: 'keywords', name: 'keywords', content: '前端，JavaScript，博客，Node，Vue' },
-      { name: 'author', content: 'qiushiming1997@gmail.com' },
+      { name: 'author', content: 'charbo233@foxmail.com' },
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
@@ -106,8 +107,9 @@ module.exports = {
    * router config
    */
   router: {
+    // 页面切换效果
     scrollBehavior: function (to, from, savedPosition) {
-      return { x: 0, y: 0 }
+      return savedPosition ? savedPosition : { x: 0, y: 0 }
     }
   },
   /*
@@ -134,10 +136,9 @@ module.exports = {
   build: {
     plugins: [
       // webpack plugin
-      new webpack.DefinePlugin({
-        TEST: JSON.stringify('hello')
-      })
-      
+      // new webpack.DefinePlugin({
+      //   TEST: JSON.stringify('hello')
+      // })
     ],
     babel: {
       plugins: [

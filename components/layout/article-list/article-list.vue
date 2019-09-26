@@ -105,7 +105,9 @@ export default {
   background-color: var(--app-background-color-light);
   // box-shadow: 0 2px 24px 5px rgba(0, 0, 0, .05);
   transition: $theme-transition;
-
+  @media (min-width: 1024px) {
+    box-shadow: 0 15px 35px rgba(50,50,93,.1)
+  }
   @media (max-width: 1399px) {
     padding: 40px 90px;
   }
