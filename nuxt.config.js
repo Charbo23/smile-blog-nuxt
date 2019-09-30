@@ -108,9 +108,10 @@ module.exports = {
    */
   router: {
     // 页面切换效果
-    scrollBehavior: function (to, from, savedPosition) {
-      return savedPosition ? savedPosition : { x: 0, y: 0 }
-    }
+    //2.9.0以后改为单独文件配置
+    // scrollBehavior: function (to, from, savedPosition) {
+    //   return savedPosition ? savedPosition : { x: 0, y: 0 }
+    // }
   },
   /*
   ** Nuxt.js modules
