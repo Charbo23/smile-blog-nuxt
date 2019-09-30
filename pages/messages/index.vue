@@ -187,7 +187,7 @@ export default {
     margin: 0.4em 0.5em;
     padding: 1em;
     background-color: var(--tag-color);
-
+    border-radius: 5px;
     @media (max-width: 479px) {
       margin: 0.2em 0.5em;
       padding: 0.5em;
