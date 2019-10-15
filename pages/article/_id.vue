@@ -3,7 +3,7 @@
     <header class="article-header" :style="articleCover">
       <div class="header-wrapper">
         <div class="content">
-          <tag-list :tagList="article.tags"></tag-list>
+          <tag-list :tagList="article.tags" @selectTag="onSelectTag"></tag-list>
           <h1 class="title">{{article.title}}</h1>
           <div class="author-wrapper" v-show="article.created_date">
             by&nbsp;
@@ -178,6 +178,17 @@ export default {
   },
 
   methods: {
+    
+    //标签搜索
+    onSelectTag(tag) {
+      this.$router.push({
+        path: `/tag/${tag.id}`,
+        query: {
+          name: tag.name
+        }
+      });
+    },
+
     // markdown 解析
     marked(content) {
       return markdown(content);
