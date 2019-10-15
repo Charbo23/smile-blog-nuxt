@@ -2,7 +2,7 @@
   "name": "smile-blog-nuxt",
   "version": "1.0.0",
   "description": "个人博客 惟有文字 长情陪伴",
-  "author": "shirmy",
+  "author": "Charbo",
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",

@@ -27,9 +27,8 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'dns-prefetch', href: '//smile.avosapps.us' },
-      { rel: 'dns-prefetch', href: '//charbo.me' },
-      { rel: 'dns-prefetch', href: '//i.loli.net' },
+      { rel: 'dns-prefetch', href: '//smile-blog-koa.herokuapp.com' },
+      { rel: 'dns-prefetch', href: '//charbo-assets.hk.ufileos.com' },
     ],
     // script: [
     //   {

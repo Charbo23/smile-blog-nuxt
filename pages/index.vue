@@ -36,7 +36,7 @@ const defaultStar = {
     }
   ],
   created_date: Date.now(),
-  cover: 'https://resource.shirmy.me/lighthouse.jpeg'
+  cover: 'http://charbo-assets.hk.ufileos.com/smile-blog/lighthouse.jpg'
 }
 
 export default {

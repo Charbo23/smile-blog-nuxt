@@ -2,9 +2,9 @@ if (process.env.NODE_ENV === 'production') {
   const copyText = `
 
 ---------------------
-作者：shirmy
+作者：charbo
 链接：${location.href}
-来源：https://www.shirmy.me
+来源：https://smile.charbo.me
 商业转载请联系作者获得授权，非商业转载请注明出处。`
 
   document.addEventListener('copy', e => {
