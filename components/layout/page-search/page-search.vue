@@ -2,7 +2,7 @@
   <div class="search-container">
     <div class="search-image"></div>
     <aside class="section-search">
-      <div class="search-close"  @click="closeSearch">
+      <div class="search-close" @click="closeSearch">
         <i class="icon icon-close"></i>
       </div>
       <div class="search-wrapper">
@@ -152,6 +152,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/scss/variables.scss";
+
 .search-container {
   display: flex;
   justify-content: space-between;
@@ -167,7 +169,7 @@ export default {
 .search-image {
   width: 40%;
   height: 100%;
-  background: url("~@/assets/image/lighthouse.jpeg") no-repeat center center;
+  background: url($assets-url+"/lighthouse.jpg") no-repeat center center;
   background-size: cover;
 
   @media (max-width: 767px) {

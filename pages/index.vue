@@ -21,7 +21,7 @@ import Carousel from '@/components/base/carousel/carousel'
 import CarouselItem from '@/components/base/carousel/carousel-item'
 import CarouselCard from '@/components/layout/carousel-card/carousel-card'
 import ArticleList from '@/components/layout/article-list/article-list'
-
+import Config from '@/config';
 const defaultStar = {
   id: 0,
   title: '空',
@@ -36,7 +36,7 @@ const defaultStar = {
     }
   ],
   created_date: Date.now(),
-  cover: 'http://charbo-assets.hk.ufileos.com/smile-blog/lighthouse.jpg'
+  cover: `${Config.assetsUrl}/lighthouse.jpg`
 }
 
 export default {

@@ -4,7 +4,7 @@
 
 <script>
 import tagDetail from '@/components/layout/tag-detail/tag-detail'
-
+import Config from '@/config';
 export default {
   components: {
     tagDetail
@@ -34,7 +34,7 @@ export default {
   created() {
     // 标签
     this.name = this.$nuxt.$route.query.name
-    this.cover = 'http://charbo-assets.hk.ufileos.com/smile-blog/lighthouse.jpg'
+    this.cover = `${Config.assetsUrl}/lighthouse.jpg`
     this.id = parseInt(this.$nuxt.$route.params.id)
   }
 }

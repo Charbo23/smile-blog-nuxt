@@ -97,9 +97,10 @@ import Comment from "@/components/layout/comment/comment";
 import SplitLine from "@/components/base/split-line/split-line";
 import TagList from "@/components/base/tag-list/tag-list";
 import Dialog from "@/components/base/dialog/dialog";
-import defaultCover from "@/assets/image/lighthouse.jpeg";
+import Config from "@/config";
 import { mapState, mapMutations } from "vuex";
-import Config from "@config";
+
+const defaultCover = Config.assetsUrl + "/lighthouse.jpg";
 
 export default {
   name: "article-detail",

@@ -7,17 +7,20 @@
         <h2 class="feature-text">
           <a @click="nav">
             {{article.title}}
-            <span
-              class="feature-dot"
-            ></span>
+            <span class="feature-dot"></span>
           </a>
         </h2>
         <span class="feature-author">
           by&nbsp;
-          <span class="author-name" v-for="author in article.authors" :key="author.id" @click.stop="navAuthor(author.id)">{{author.name}}</span>
-          <time :datetime="article.created_date | filterTime">
-            &nbsp;{{article.created_date | filterTime('Y-m-d')}}
-          </time>
+          <span
+            class="author-name"
+            v-for="author in article.authors"
+            :key="author.id"
+            @click.stop="navAuthor(author.id)"
+          >{{author.name}}</span>
+          <time
+            :datetime="article.created_date | filterTime"
+          >&nbsp;{{article.created_date | filterTime('Y-m-d')}}</time>
         </span>
       </article>
     </div>
@@ -25,7 +28,9 @@
 </template>
 
 <script>
-import defaultCover from '@/assets/image/lighthouse.jpeg'
+import Config from "@/config";
+
+const defaultCover = Config.assetsUrl + "/lighthouse.jpg";
 
 export default {
   props: {
@@ -37,7 +42,7 @@ export default {
 
   computed: {
     articleCover() {
-      return this.article.cover ? this.article.cover : defaultCover
+      return this.article.cover ? this.article.cover : defaultCover;
     }
   },
 
@@ -46,7 +51,7 @@ export default {
       if (this.article.id) {
         this.$router.push({
           path: `/article/${this.article.id}`
-        })
+        });
       }
     },
 
@@ -54,15 +59,14 @@ export default {
       if (id) {
         this.$router.push({
           path: `/about/${id}`
-        })
+        });
       }
     }
-  },
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-
 .card-container {
   display: flex;
   justify-content: space-between;
@@ -133,7 +137,7 @@ export default {
     cursor: pointer;
 
     &:not(:first-child)::before {
-      content: '、'
+      content: "、";
     }
   }
 }
@@ -213,7 +217,6 @@ export default {
 
 @media (max-width: 767px) {
   .card-container {
-
     .feature-content {
       padding: 60px 18% 60px 85px;
     }
@@ -227,7 +230,6 @@ export default {
 
 @media (max-width: 479px) {
   .card-container {
-
     .feature-content {
       padding: 30px 15px;
     }
