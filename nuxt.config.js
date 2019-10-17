@@ -30,29 +30,28 @@ module.exports = {
       { rel: 'dns-prefetch', href: '//smile-blog-koa.herokuapp.com' },
       { rel: 'dns-prefetch', href: '//charbo-assets.hk.ufileos.com' },
     ],
-    // script: [
-    //   {
-    //     async: 'async',
-    //     type: 'text/javascript',
-    //     src: 'https://resource.shirmy.me/intersection-polyfill.js'
-    //   },
-    //   {
-    //     async: 'async',
-    //     type: 'text/javascript',
-    //     src: 'https://www.googletagmanager.com/gtag/js?id=UA-144196694-1'
-    //   },
-    //   {
-    //     // Global site tag (gtag.js) - Google Analytics
-    //     type: 'text/javascript',
-    //     innerHTML: `
-    //       window.dataLayer = window.dataLayer || [];
-    //       function gtag(){dataLayer.push(arguments);}
-    //       gtag('js', new Date());
-
-    //       gtag('config', 'UA-144196694-1');
-    //     `
-    //   }
-    // ],
+    script: [
+      {
+        async: 'async',
+        type: 'text/javascript',
+        src: 'https://charbo-assets.hk.ufileos.com/google-assets/intersection-polyfill.js'
+      },
+      {
+        async: 'async',
+        type: 'text/javascript',
+        src: 'https://www.googletagmanager.com/gtag/js?id=UA-144334189-2'
+      },
+      {
+        // Global site tag (gtag.js) - Google Analytics
+        type: 'text/javascript',
+        innerHTML: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-144334189-2');
+        `
+      }
+    ],
     noscript: [
       {
         innerHTML: 'This website requires JavaScript.'
