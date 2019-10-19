@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://smile.charbo.me/</loc>
+  <lastmod>2019-10-19T10:25:17+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://smile.charbo.me/archive</loc>
+  <lastmod>2019-10-19T10:25:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://smile.charbo.me/sitemap</loc>
+  <lastmod>2019-10-19T10:25:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://smile.charbo.me/about</loc>
+  <lastmod>2019-10-19T10:25:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://smile.charbo.me/messages</loc>
+  <lastmod>2019-10-19T10:25:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://smile.charbo.me/article/3</loc>
+  <lastmod>2019-10-19T10:25:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://smile.charbo.me/article/1</loc>
+  <lastmod>2019-10-19T10:25:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+
+</urlset>
