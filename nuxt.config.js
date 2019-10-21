@@ -15,7 +15,7 @@ module.exports = {
   */
   head: {
     title: '首页',
-    titleTemplate: '%s | CBLog',
+    titleTemplate: '%s | CBSmile',
     meta: [
       { charset: 'utf-8' },
       { 'http-equiv': 'cleartype', content: 'on' },
