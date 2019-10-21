@@ -1,6 +1,6 @@
-## smile-blog-nuxt (https://www.shirmy.me)
+## smile-blog-nuxt (https://smile.charbo.me)
 
-[![Build Status](https://www.travis-ci.org/smileShirmy/smile-blog-nuxt.svg?branch=master)](https://www.travis-ci.org/smileShirmy/smile-blog-nuxt)
+Inspired by  [Shirmy](https://github.com/smileShirmy) and customized for myself
 
 - 适配多分辨率
 - 支持白昼黑夜主题切换
@@ -10,9 +10,9 @@
 
 该项目为前端展示部分，其它部分可点击下面的链接
 
-- 展示前端 [smile-blog-nuxt](https://github.com/smileShirmy/smile-blog-nuxt)
-- 管理后台 [smile-blog-admin](https://github.com/smileShirmy/smile-blog-admin)
-- 服务端 [smile-blog-koa](https://github.com/smileShirmy/smile-blog-koa)
+- 展示前端 [smile-blog-nuxt](https://github.com/Charbo23/smile-blog-nuxt)
+- 管理后台 [smile-blog-admin](https://github.com/Charbo23/smile-blog-admin)
+- 服务端 [smile-blog-koa](https://github.com/Charbo23/smile-blog-koa)
 
 ## screenshot
 
@@ -26,7 +26,7 @@
 
 ## Setup
 
-该项目使用 RESTful API，要启动该项目要先启动服务端 [smile-blog-koa](https://github.com/smileShirmy/smile-blog-koa)
+该项目使用 RESTful API，要启动该项目要先启动服务端 [smile-blog-koa](https://github.com/Charbo23/smile-blog-koa)
 
 ```bash
 # install
