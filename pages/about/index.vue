@@ -2,11 +2,11 @@
   <div class="about-container">
     <split-line :icon="'about'" :desc="'我们'"></split-line>
     <ul class="author-list">
-      <li
+      <nuxt-link
         class="author-item"
         v-for="author in authors"
         :key="author.id"
-        @click="showProfile(author.id)"
+        :to="`/about/${author.id}`"
       >
         <div class="author-avatar" :style="{backgroundImage: `url(${author.avatar})`}"></div>
         <div class="author-info-wrapper">
@@ -17,7 +17,7 @@
           <div class="author-social"></div>
           <p class="author-desc">{{author.description}}</p>
         </div>
-      </li>
+      </nuxt-link>
     </ul>
     <div>
       <split-line :icon="'star-fill'" :desc="'友链 (在留言板申请“昵称+链接”)'"></split-line>
@@ -67,11 +67,7 @@ export default {
   },
 
   methods: {
-    showProfile(id) {
-      this.$router.push({
-        path: `/about/${id}`
-      });
-    }
+ 
   }
 };
 </script>
