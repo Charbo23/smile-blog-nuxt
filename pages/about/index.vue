@@ -172,7 +172,7 @@ export default {
   .friend-item {
     display: flex;
     align-items: center;
-    padding: 5px 12px;
+    padding: 5px 12px 5px 5px;
     margin: 5px;
     color: var(--font-color-primary);
     font-size: $font-size-base;
