@@ -26,7 +26,7 @@ module.exports = {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/mel.ico' },
+      { rel: 'icon', type: 'image/x-icon', href: '/mel.png' },
       { rel: 'dns-prefetch', href: '//smile-blog-koa.herokuapp.com' },
       { rel: 'dns-prefetch', href: '//charbo-assets.hk.ufileos.com' },
     ],
