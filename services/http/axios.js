@@ -63,7 +63,7 @@ _axios.interceptors.request.use(originConfig => {
 
   return reqConfig
 }, error => {
-  Promise.reject(error)
+  return Promise.reject(error)
 })
 
 _axios.interceptors.response.use(async (res) => {
