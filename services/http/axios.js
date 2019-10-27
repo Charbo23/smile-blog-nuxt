@@ -62,17 +62,20 @@ _axios.interceptors.request.use(originConfig => {
   }
 
   return reqConfig
-}, error => {
-  return Promise.reject(error)
+}, (error) => {
+  // eslint-disable-next-line no-console
+  console.log("Error occured on request");
+  return Promise.reject(error);
 })
 
 _axios.interceptors.response.use(async (res) => {
   if (res.status.toString().charAt(0) === '2') {
     return res.data
   }
-}, error => {
+}, (error) => {
   // eslint-disable-next-line no-console
-  console.log(error)
+  console.log("Error occured on response");
+  return Promise.reject(error);
 })
 
 const Plugin = {}
