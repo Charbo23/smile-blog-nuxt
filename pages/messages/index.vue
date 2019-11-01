@@ -8,9 +8,9 @@
       <li class="message-item" v-for="message in messages" :key="message.id">
         <span v-if="message.nickname" class="nickname">@{{message.nickname}}</span>
         <div class="content">
-          <no-ssr>
+          <client-only>
             <p v-html="marked(message.content)"></p>
-          </no-ssr>
+          </client-only>
         </div>
         <time
           class="time"
