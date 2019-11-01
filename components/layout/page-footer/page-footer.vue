@@ -1,10 +1,12 @@
 <template>
   <footer class="footer-container">
     <div class="footer-wrapper">
-      <a class="between">
+      <span class="between">
         <switch-theme :size="'18px'"></switch-theme>
-        <span class="logo">Smile</span>
-      </a>
+        <nuxt-link to="/">
+          <span class="logo">Smile</span>
+        </nuxt-link>
+      </span>
       <div class="menu-wrapper">
         <desktop-nav :navList="navList"></desktop-nav>
       </div>
@@ -21,15 +23,18 @@
       </div>
     </div>
     <div class="footer-copyright">
-      <span class="copyright">© 2019 <span class="logo">Smile</span></span>. All Right Reserved.
+      <span class="copyright">
+        © 2019
+        <span class="logo">Smile</span>
+      </span>. All Right Reserved.
       <!-- <div class="record-number">粤ICP备17101737号-1</div> -->
     </div>
   </footer>
 </template>
 
 <script>
-import SwitchTheme from '@/components/base/switch-theme/switch-theme'
-import DesktopNav from '@/components/base/nav/desktop-nav'
+import SwitchTheme from "@/components/base/switch-theme/switch-theme";
+import DesktopNav from "@/components/base/nav/desktop-nav";
 
 export default {
   components: {
@@ -42,8 +47,8 @@ export default {
       type: Array,
       default: () => []
     }
-  },
-}
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -141,7 +146,7 @@ export default {
     margin: 0 auto;
     padding: 25px 30px;
     text-align: center;
-    letter-spacing: .7px;
+    letter-spacing: 0.7px;
     color: var(--font-color-light);
 
     .copyright {
@@ -156,5 +161,5 @@ export default {
 
 .record-number {
   margin-top: 10px;
-};
+}
 </style>

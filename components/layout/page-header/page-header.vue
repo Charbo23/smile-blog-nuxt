@@ -2,7 +2,9 @@
   <header class="header-container" :class="homeMobileClass">
     <div class="header-logo">
       <switch-theme :size="'30px'"></switch-theme>
-      <i class="logo">Smile</i>
+      <nuxt-link to="/">
+        <span class="logo">Smile</span>
+      </nuxt-link>
     </div>
     <nav class="nav-wrapper">
       <desktop-nav class="desktop-nav" :navList="navList"></desktop-nav>
@@ -12,9 +14,9 @@
 </template>
 
 <script>
-import DesktopNav from "@/components/base/nav/desktop-nav"
-import MobileNav from "@/components/base/nav/mobile-nav"
-import SwitchTheme from '@/components/base/switch-theme/switch-theme'
+import DesktopNav from "@/components/base/nav/desktop-nav";
+import MobileNav from "@/components/base/nav/mobile-nav";
+import SwitchTheme from "@/components/base/switch-theme/switch-theme";
 
 export default {
   components: {
@@ -32,7 +34,7 @@ export default {
 
   computed: {
     homeMobileClass() {
-      return this.$route.path === '/' ? "home-mobile-class" : "";
+      return this.$route.path === "/" ? "home-mobile-class" : "";
     }
   }
 };
@@ -66,7 +68,6 @@ export default {
 
 @media (max-width: 1023px) {
   .home-mobile-class {
-
     .header-logo {
       color: #fff;
     }
