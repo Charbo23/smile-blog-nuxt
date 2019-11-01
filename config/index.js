@@ -3,6 +3,6 @@ const Config = {
   assetsUrl: 'https://cdn.charbost.com/smile-blog',
   // 如果使用七牛云存储可通过后缀支持先展示缩略图,实现懒加载
   staticPath: 'cdn.charbost.com',
-  imageLazyLoad: true
+  imageLazyLoad: false
 }
 export default Config

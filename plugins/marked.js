@@ -48,11 +48,11 @@ const imageParse = (src, title, alt) => {
     return `
     <figure class="image-wrapper">
       <div class="progress-image">
-        <img src="${src}@thumb" title="${title || alt || 'CBSmile'}"
+        <img src="${src}@thumbnail" title="${title || alt || 'CBSmile'}"
           class="thumbnail"/>
         <img
           data-origin="${src}"
-          data-src="${src}@progressive" title="${title || alt || 'CBSmile'}"
+          data-src="${src}" title="${title || alt || 'CBSmile'}"
           class="image-popper real-image"/>
       </div>
       <div class="image-caption">
@@ -65,11 +65,11 @@ const imageParse = (src, title, alt) => {
       <figure class="image-wrapper">
         <div class="progress-image">
           <img
-            src="${src}" title="${title || alt || 'CBSmile'}" data-origin="${src}"
+            src="${src.includes(Config.staticPath) ? src + '@thumbnail' : src}" title="${title || alt || 'CBSmile'}" data-origin="${src}"
             class="image-popper" />
         </div>
         <div class="image-caption">
-          <span>${title || alt || ''}</span>
+          <span>${title || alt || 'CBSmile'}</span>
         </div>
       </figure>
     `
