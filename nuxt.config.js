@@ -28,13 +28,13 @@ module.exports = {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/mel.png' },
       { rel: 'dns-prefetch', href: '//smile-blog-koa.herokuapp.com' },
-      { rel: 'dns-prefetch', href: '//charbo-assets.hk.ufileos.com' },
+      { rel: 'dns-prefetch', href: '//cdn.charbost.com' },
     ],
     script: [
       {
         async: 'async',
         type: 'text/javascript',
-        src: 'https://charbo-assets.hk.ufileos.com/google-assets/intersection-polyfill.js'
+        src: 'https://cdn.charbost.com/smile-blog/intersection-polyfill.js'
       },
       {
         async: 'async',

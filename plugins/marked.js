@@ -44,19 +44,19 @@ marked.setOptions({
 })
 
 const imageParse = (src, title, alt) => {
-  if (Config.imageLazyLoad) {
+  if (Config.imageLazyLoad && src.includes(Config.staticPath)) {
     return `
     <figure class="image-wrapper">
       <div class="progress-image">
-        <img src="${src}" title="${title || alt || 'CBSmile'}"
+        <img src="${src}@thumb" title="${title || alt || 'CBSmile'}"
           class="thumbnail"/>
         <img
           data-origin="${src}"
-          data-src="${src}" title="${title || alt || 'CBSmile'}"
+          data-src="${src}@progressive" title="${title || alt || 'CBSmile'}"
           class="image-popper real-image"/>
       </div>
       <div class="image-caption">
-        <span>${title || alt || ''}</span>
+        <span>${title || alt || 'CBSmile'}</span>
       </div>
     </figure>
   `
