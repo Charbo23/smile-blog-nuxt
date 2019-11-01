@@ -70,6 +70,9 @@ export default {
   .home-mobile-class {
     .header-logo {
       color: #fff;
+      a{
+        color:#fff;
+      }
     }
   }
 }
