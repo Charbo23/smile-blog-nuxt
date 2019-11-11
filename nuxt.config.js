@@ -27,7 +27,7 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/mel.png' },
-      { rel: 'dns-prefetch', href: '//smile-blog-koa.herokuapp.com' },
+      { rel: 'dns-prefetch', href: '//api.charbost.com' },
       { rel: 'dns-prefetch', href: '//cdn.charbost.com' },
     ],
     script: [
