@@ -19,7 +19,23 @@ export const state = () => ({
   article: null,
   comments: []
 })
-
+export const getters = {
+  getOrderedStarArticles(state) {
+    return (orderType) => {
+      const resArr = [...state.starArticles];
+      switch (orderType) {
+        case 'desc':
+          resArr.reverse();
+          break;
+        case 'asc':
+          break;
+        default:
+          break;
+      }
+      return resArr;
+    }
+  }
+}
 export const mutations = {
   setHomeArticles(state, { articles, total, starArticles }) {
     state.articles = articles
@@ -64,7 +80,7 @@ export const mutations = {
   setLikeComment(state, id) {
     state.comments.forEach(v => {
       if (v.id === id) {
-        v.like ++
+        v.like++
       }
     })
   }
@@ -178,7 +194,7 @@ export const actions = {
     return await article.likeArticle(id)
   },
 
-  async likeComment({ commit}, id) {
+  async likeComment({ commit }, id) {
     const res = await comment.likeComment(id)
     if (res.errorCode === 0) {
       commit('setLikeComment', id)

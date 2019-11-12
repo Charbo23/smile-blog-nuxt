@@ -19,7 +19,7 @@
             contenteditable="true"
             @keyup="contentChange"
             @click="getCursorPosition"
-            :placeholder="isMessageEditor ? '我想说...' : '评论...'"
+            :placeholder="isMessageEditor ? 'Leave your words here' : 'Feel free to talk'"
           ></div>
         </section>
         <!-- 工具栏 -->

@@ -1,15 +1,16 @@
 <template>
   <div>
-    <carousel class="carousel-container"
+    <carousel
+      class="carousel-container"
       :showRightArrow="starArticles.length > 1"
       :showLeftArrow="starArticles.length > 1"
       :autoplay="starArticles.length > 1"
-      :autoplaySpeed=6000
+      :autoplaySpeed="6000"
     >
       <carousel-item v-for="article in starArticles" :key="article.id">
         <carousel-card :article="article"></carousel-card>
       </carousel-item>
-    </Carousel>
+    </carousel>
     <section class="article-wrapper">
       <article-list :articles="articles" :loading="loading" :total="total" @loadMore="onLoadMore"></article-list>
     </section>
@@ -17,81 +18,84 @@
 </template>
 
 <script>
-import Carousel from '@/components/base/carousel/carousel'
-import CarouselItem from '@/components/base/carousel/carousel-item'
-import CarouselCard from '@/components/layout/carousel-card/carousel-card'
-import ArticleList from '@/components/layout/article-list/article-list'
-import Config from '@/config';
+import Carousel from "@/components/base/carousel/carousel";
+import CarouselItem from "@/components/base/carousel/carousel-item";
+import CarouselCard from "@/components/layout/carousel-card/carousel-card";
+import ArticleList from "@/components/layout/article-list/article-list";
+import Config from "@/config";
+import {mapGetters} from 'vuex';
+
 const defaultStar = {
   id: 0,
-  title: '空',
+  title: "空",
   category: {
     id: 0,
-    name: '空'
+    name: "空"
   },
   authors: [
     {
       id: 0,
-      name: 'Charbo'
+      name: "Charbo"
     }
   ],
   created_date: Date.now(),
   cover: `${Config.assetsUrl}/lighthouse.jpg`
-}
+};
 
 export default {
-  name: 'home-page',
+  name: "home-page",
 
   components: {
     Carousel,
     CarouselItem,
     CarouselCard,
-    ArticleList,
+    ArticleList
   },
 
-  async fetch ({ store, params }) {
-    await store.dispatch('article/getHomeArticles', {
+  async fetch({ store, params }) {
+    await store.dispatch("article/getHomeArticles", {
       page: 0
-    })
+    });
   },
 
   data() {
     return {
-      page: 0,
-    }
+      page: 0
+    };
   },
 
   computed: {
+    ...mapGetters('article',['getOrderedStarArticles']),
     articles() {
-      return this.$store.state.article.articles
+      return this.$store.state.article.articles;
     },
 
     total() {
-      return this.$store.state.article.total
+      return this.$store.state.article.total;
     },
 
     starArticles() {
-      const starArticles = this.$store.state.article.starArticles
+      const starArticles = this.getOrderedStarArticles('desc');
       if (!starArticles.length) {
-        return [defaultStar]
+        return [defaultStar];
       }
-      return starArticles
+      return starArticles;
     },
 
     loading() {
-      return this.$store.state.article.loading
+      return this.$store.state.article.loading;
     }
   },
 
   methods: {
     onLoadMore() {
       if (this.loading) {
-        return
+        return;
       }
-      this.page++
-      this.$store.dispatch('article/getMoreArticles', {
+      this.page++;
+      this.$store.dispatch("article/getMoreArticles", {
         page: this.page
-      })
+      });
     }
   },
 
@@ -102,8 +106,8 @@ export default {
 
   mounted() {
     // console.log()
-  },
-}
+  }
+};
 </script>
 
 <style lang="scss" scoped>
