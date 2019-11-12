@@ -27,9 +27,11 @@
         © 2019
         <span class="logo">Smile</span>
       </span>. All Right Reserved.
-      <div class="record-number">
-        <a href="http://www.beian.miit.gov.cn" target="_blank">浙ICP备19044708号-1</a>
-      </div>
+      <client-only>
+        <div class="record-number" v-if="ICPNumber">
+          <a href="http://www.beian.miit.gov.cn" target="_blank">{{ICPNumber}}</a>
+        </div>
+      </client-only>
     </div>
   </footer>
 </template>
@@ -37,13 +39,27 @@
 <script>
 import SwitchTheme from "@/components/base/switch-theme/switch-theme";
 import DesktopNav from "@/components/base/nav/desktop-nav";
+import Config from "@/config";
+
+const { ICPDomains } = Config;
 
 export default {
   components: {
     SwitchTheme,
     DesktopNav
   },
-
+  computed: {
+    ICPNumber() {
+      if (process.server || !Array.isArray(ICPDomains)) {
+        return false;
+      }
+      const { ICPNumber: number } =
+        ICPDomains.find(item => {
+          return location.hostname.endsWith(item.domain);
+        }) || {};
+      return number;
+    }
+  },
   props: {
     navList: {
       type: Array,
