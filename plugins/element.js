@@ -1,4 +1,5 @@
-import Vue from 'vue'
-import { Avatar } from 'element-ui'
+import Vue from 'vue';
+import { Avatar, Icon } from 'element-ui';
 
-Vue.use(Avatar)
+Vue.use(Avatar);
+Vue.use(Icon);
