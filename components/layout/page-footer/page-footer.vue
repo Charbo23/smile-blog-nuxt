@@ -25,7 +25,7 @@
     <div class="footer-copyright">
       <span class="copyright">
         © 2019
-        <span class="logo">Smile</span>
+        <a class="logo" href="https://github.com/smileShirmy/smile-blog-nuxt" target="_blank">Smile</a>
       </span>. All Right Reserved.
       <client-only>
         <div class="record-number" v-if="ICPNumber">
