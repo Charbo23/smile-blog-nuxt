@@ -34,7 +34,7 @@ module.exports = {
       {
         async: 'async',
         type: 'text/javascript',
-        src: 'https://cdn.charbost.com/smile-blog/intersection-polyfill.js'
+        src: 'https://cdn.charbost.com/cbsmile/intersection-polyfill.js'
       },
       {
         async: 'async',
